@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="book-box">
+        <section>
+            <div class="row">
+                <div class="column book-image"><img alt="{{ book.title.title() }} cover photo" src="{{ url_for('static', filename='images/cover-eloquent_ruby.jpg') }}" /></div>
+                <div class="column book-container">
+                    <div class="content"><span class="bold-title">Author: </span><a href="{{ url_for('authors_bp.read_one_author', author_id=book.author.id) }}">{{ book.author.name }}</a></div>
+                    <div class="content"><span class="bold-title">E-mail: </span>{{ book.author.e_mail }}</div>
+                    <div class="content"><span class="bold-title">Twitter: </span><span class="text-italic">{{ book.author.twitter }}</span></div>
+                    <div class="content"><span class="bold-title">Website: </span>{{ book.website }}</div>
+                    <div class="content"><span class="bold-title">Format: </span>{{ book.format }}, {{ book.pages }} pages</div>
+                    <div class="content"><span class="bold-title">Website: </span>{{ book.website }}</div>
+                    <div class="content"><span class="bold-title">Publication Date: </span>{{ book.publication_date.strftime('%B %d, %Y') }}</div>
+                    <div class="content"><span class="bold-title">Publisher: </span>{{ book.publisher }}</div>
+                    <div class="content"><span class="bold-title">Price: </span>${{ book.price }}</div>
+                    <div class="content"><span class="bold-title">ISBN: </span>{{ book.isbn }}</div>
+                </div>
+            
+        </section>
+        <div><span class="bold-title">Description: </span>{{ book.description }}</div>
+    </div>
+    <section>
+        <h2 class="minor-header">Reviews</h2>
+        <div>
+            {% for review in book.reviews %}
+            <div class="smaller-font review-box">
+                <p><span class="underline-title">Review #{{ review.id }} Title:</span> {{ review.title }}</p>
+                <p>Reviewer #{{ review.id }}: <a href="{{ url_for('reviewers_bp.read_one_reviewer', reviewer_id=review.reviewer.id) }}">{{ review.reviewer.name }}</a></p>
+                <p>Review #{{ review.id }} Date: {{ review.date.strftime('%B %d, %Y') }}</p>
+                <p>Review #{{ review.id }}: <br>{{ review.content }}</br></p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

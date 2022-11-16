@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/base.css') }}" />
+        {% if book %}
+        <h1>Book #{{book.id}}: {{ book.title }}</h1>
+        {% else %}
+        <h1>Welcome to Book Reviews</h1>
+        {% endif %}
+    </head>
+    <body>
+        {% if books %}
+        <div>
+            {% for book in books %}
+                <h4>Here's a few of our titles: </h4>
+                <li><a class="underline-title" href="{{ url_for('books_bp.read_one_book', book_id=book.id) }}">{{ book.title }}</a></li>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div>
+            {% block content %}{% endblock %}
+        </div>
+        {% endif %}
+    </body>
+
+    <br></br>
+    <h3 class="minor-header align-center">OUR TOP FIVE BOOKS</h3>
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-img">
+                    <img alt="Clean Ruby" src="{{ url_for('static', filename='images/cover-clean_ruby.jpg') }}">
+                </div>
+                <div class="card-desc">
+                    <h4>Clean Ruby</h4>
+                </div>
+            </div>
+            <ul class="card-links">
+                <li>
+                    <a href="https://www.goodreads.com/en/book/show/14438307-clean-ruby">Goodreads</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-img">
+                    <img alt="Confident Ruby" src="{{ url_for('static', filename='images/cover-confident_ruby.jpg') }}">
+                </div>
+                <div class="card-desc">
+                    <h4>Confident Ruby</h4>
+                </div>
+            </div>
+            <ul class="card-links">
+                <li>
+                    <a href="https://www.amazon.com/Confident-Ruby-Patterns-Joyful-Coding-ebook/dp/B00ETE0D2S">Amazon</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-img">
+                    <img alt="Eloquent Ruby" src="{{ url_for('static', filename='images/cover-eloquent_ruby.jpg') }}">
+                </div>
+                <div class="card-desc">
+                    <h4>Eloquent Ruby</h4>
+                </div>
+            </div>
+            <ul class="card-links">
+                <li>
+                    <a href="https://www.amazon.com/Eloquent-Ruby-Addison-Wesley-Professional/dp/0321584104/ref=sr_1_1?gclid=EAIaIQobChMI0KzGksSs-wIVsmxvBB01OAl3EAAYASAAEgJqF_D_BwE&hvadid=241668207091&hvdev=c&hvlocphy=9033306&hvnetw=g&hvqmt=e&hvrand=1988488500204056870&hvtargid=kwd-27231871316&hydadcr=16372_10302069&keywords=eloquent+ruby&qid=1668389757&sr=8-1">Amazon</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-img">
+                    <img alt="Ruby Science" src="{{ url_for('static', filename='images/cover-ruby_science.jpg') }}">
+                </div>
+                <div class="card-desc">
+                    <h4>Ruby Science</h4>
+                </div>
+            </div>
+            <ul class="card-links">
+                <li>
+                    <a href="https://www.goodreads.com/en/book/show/16720439-ruby-science">Goodreads</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-img">
+                    <img alt="Well Grounded Rubyist" src="{{ url_for('static', filename='images/cover-well_grounded_rubyist.jpg') }}">
+                </div>
+                <div class="card-desc">
+                    <h4>Well Grounded Rubyist</h4>
+                </div>
+            </div>
+            <ul class="card-links">
+                <li>
+                    <a href="https://www.amazon.com/Well-Grounded-Rubyist-David-Black/dp/1617295213/ref=sr_1_1?gclid=EAIaIQobChMIodTGwsSs-wIVgys4Ch1XWQk4EAAYASAAEgL2ofD_BwE&hvadid=241926965234&hvdev=c&hvlocphy=9033306&hvnetw=g&hvqmt=e&hvrand=11822691404488939660&hvtargid=kwd-17719261877&hydadcr=22561_10346245&keywords=well-grounded+rubyist&qid=1668389853&sr=8-1">Amazon</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="align-right">
+        <div>
+            <br></br>
+            <p>
+                <a href="{{ url_for('base_bp.read_home_page') }}">Home</a>
+                <span> | </span>
+                <a href="{{ url_for('base_bp.read_contact_page') }}">Contact Us</a>
+            </p>
+            <p class="text-italic"><sdivan>&copy;</span>Copyright 2022</p>
+        </div>
+    </footer>
+</html>
