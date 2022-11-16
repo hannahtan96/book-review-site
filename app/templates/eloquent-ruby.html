@@ -3,9 +3,13 @@
 {% block content %}
     <div class="book-box">
         <section>
-            <div class="row">
-                <div class="column book-image"><img alt="{{ book.title.title() }} cover photo" src="{{ url_for('static', filename='images/cover-eloquent_ruby.jpg') }}" /></div>
-                <div class="column book-container">
+            <div class="frame">
+                <div class="book-profile">
+                    <div class="book-image">
+                        <img alt="{{ book.title.title() }} cover photo" src="{{ url_for('static', filename='images/cover-eloquent_ruby.jpg') }}" />
+                    </div>
+                </div>
+                <div class="book-details">
                     <div class="content"><span class="bold-title">Author: </span><a href="{{ url_for('authors_bp.read_one_author', author_id=book.author.id) }}">{{ book.author.name }}</a></div>
                     <div class="content"><span class="bold-title">E-mail: </span>{{ book.author.e_mail }}</div>
                     <div class="content"><span class="bold-title">Twitter: </span><span class="text-italic">{{ book.author.twitter }}</span></div>
@@ -17,12 +21,15 @@
                     <div class="content"><span class="bold-title">Price: </span>${{ book.price }}</div>
                     <div class="content"><span class="bold-title">ISBN: </span>{{ book.isbn }}</div>
                 </div>
-            
+                
+            </div>
+            <div class="book-desc"><span class="bold-title">Description: </span>{{ book.description }}</div>
         </section>
-        <div><span class="bold-title">Description: </span>{{ book.description }}</div>
+        
     </div>
     <section>
-        <h2 class="minor-header">Reviews</h2>
+        <h2 class="minor-header">REVIEWS</h2>
+        <hr>
         <div>
             {% for review in book.reviews %}
             <div class="smaller-font review-box">

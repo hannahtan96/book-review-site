@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/base.css') }}" />
         {% if book %}
-        <h1>Book #{{book.id}}: {{ book.title }}</h1>
+        <h1 class="book-title">Book #{{book.id}}: {{ book.title }}</h1>
         {% else %}
         <h1>Welcome to Book Reviews</h1>
         {% endif %}
@@ -26,6 +26,7 @@
 
     <br></br>
     <h3 class="minor-header align-center">OUR TOP FIVE BOOKS</h3>
+    <hr>
     <div class="container">
         <div class="card">
             <div class="card-content">
